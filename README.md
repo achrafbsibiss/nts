@@ -1,4 +1,19 @@
 # README
+After you clone the project run this commands:
+```bash
+
+bundle install
+rails db:migrate
+
+bundle exec overcommit --install
+
+```
+
+To run the project
+
+```bash
+bin/dev
+```
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
