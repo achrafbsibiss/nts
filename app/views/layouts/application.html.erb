@@ -11,10 +11,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= render "layouts/hedear"%>
-    <div>
-      <%= yield %>
-    </div>
+  <body data-controller="right" class="h-full">
+    <%#= render "layouts/hedear"%>
+    <% if current_user  %>
+      <%= render partial: "layouts/main" %>
+    <% else %>
+      <%= render partial: "layouts/guest" %>
+    <% end %>
   </body>
 </html>
