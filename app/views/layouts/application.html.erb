@@ -11,12 +11,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= render "layouts/hedear"%>
-    <div class= "mx-auto max-w-7xl px-2 sm:px-6 lg:px-2 pt-16" >
-      <div class="mx-auto max-w-6xl">
-        <%= yield %>
-      </div>
-    </div>
+  <body data-controller="right" class="h-full">
+    <%#= render "layouts/hedear"%>
+    <% if current_user  %>
+      <%= render partial: "layouts/main" %>
+    <% else %>
+      <%= render partial: "layouts/guest" %>
+    <% end %>
   </body>
 </html>
