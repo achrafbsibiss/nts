@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar, dependent: :destroy
-  enum gender: {male: 0, female: 1}
+  enum gender: { male: 0, female: 1, other: 2 }
 
   def avatar_url_or_default
     if avatar.attached?
@@ -16,5 +16,9 @@ class User < ApplicationRecord
       "users/user.png"
     end
   end 
+
+  def full_name(first_name_first: true)
+    first_name_first ? "#{first_name} #{last_name}" : "#{last_name} #{first_name}"
+  end
   
 end
