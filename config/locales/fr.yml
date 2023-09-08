@@ -1,0 +1,14 @@
+fr:
+  attributes:
+    user:
+      genders:
+        male: "Homme"
+        female: "Femme"
+        other: "Autre"
+  buttons:
+    save: "sauvegarder"
+    cancel: "annuler"
+  flash:
+    successfully_created: "Création effectuée avec succès."
+    successfully_updated: "Mise à jour effectuée avec succès."
+    successfully_destroyed: "Supprimé(e) avec succès"

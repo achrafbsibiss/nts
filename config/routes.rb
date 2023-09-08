@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "dashboard#index"
 
-  devise_for :users
-
-  resources :users
+  scope "(:locale)", locale: /en|fr/ do
+    devise_for :users
+    resources :users
+  end
 end
