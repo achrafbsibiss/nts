@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   root to: "dashboard#index"
 
   scope "(:locale)", locale: /en|fr/ do
-    devise_for :users
+    devise_for :users, skip: [:registrations]
     resources :users
+
+    get "dashboard", to: "dashboard#index"
   end
 end

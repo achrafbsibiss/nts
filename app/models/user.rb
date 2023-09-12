@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar, dependent: :destroy
+
+  validates :first_name, :last_name, :gender, :birthdate,
+    :cin, :nationality, :gender, presence: true
+
   enum gender: { male: 0, female: 1, other: 2 }
 
   def avatar_url_or_default
