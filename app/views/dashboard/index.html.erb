@@ -163,9 +163,9 @@
               <div class="mt-6 flow-root">
                 <ul role="list" class="-my-5 divide-y divide-gray-200">
                   <% @users.each do |user|%>
-                    <li class="py-4">
+                    <li class="py-4" id= "<%= user.id %>">
                       <div class="relative flex items-center gap-x-4">
-                        <%#= image_tag user.avatar_url_or_default, class: "rounded-full h-10 w-10 align-middle" %>
+                        <%= image_tag user.avatar_url_or_default, class: "rounded-full h-10 w-10 align-middle" %>
                         <div class="text-sm leading-6">
                           <p class="font-semibold text-gray-900"><%= user.full_name.capitalize %></p>
                           <p class="text-gray-600"><%#= user.job_title %></p>
