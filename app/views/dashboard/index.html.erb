@@ -163,7 +163,7 @@
               <div class="mt-6 flow-root">
                 <ul role="list" class="-my-5 divide-y divide-gray-200">
                   <% @users.each do |user|%>
-                    <li class="py-4" id= "<%= user.id %>">
+                    <li class="py-4">
                       <div class="relative flex items-center gap-x-4">
                         <%= image_tag user.avatar_url_or_default, class: "rounded-full h-10 w-10 align-middle" %>
                         <div class="text-sm leading-6">

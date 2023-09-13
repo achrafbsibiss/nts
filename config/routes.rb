@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   scope "(:locale)", locale: /en|fr/ do
     devise_for :users, skip: [:registrations]
+
+    resources :roles
     resources :users
 
     get "dashboard", to: "dashboard#index"

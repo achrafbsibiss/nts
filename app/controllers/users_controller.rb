@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   end 
   
   def new
-    puts "let start new user >>>>>>>>>>>"
     @user = User.new
     # authorize! @user
   end
@@ -17,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts ">>>>>>>>>>> let create new user"
     # authorize! @user
     @user = User.new(user_params)
     @user.password = Devise.friendly_token.first(8)
