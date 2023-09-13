@@ -13,3 +13,9 @@ en:
     successfully_created: "Successfully created"
     successfully_updated: "Successfully updated"
     successfully_destroyed: "Successfully destroyed"
+  role:
+    names:
+      admin: "Admin"
+      field_agent: "Field agent"
+      project_manager: "Project manager"
+      project_director: "Project director"

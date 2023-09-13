@@ -12,3 +12,9 @@ fr:
     successfully_created: "Création effectuée avec succès."
     successfully_updated: "Mise à jour effectuée avec succès."
     successfully_destroyed: "Supprimé(e) avec succès"
+  role:
+    names:
+      admin: "Admin"
+      field_agent: "Agent de Terrain"
+      project_manager: "Chef de projet"
+      project_director: "Directeur du Projet"
