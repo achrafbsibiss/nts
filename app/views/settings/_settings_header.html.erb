@@ -1,0 +1,8 @@
+<div class="sm:flex-auto">
+  <h1><%= t("views.shared.settings") %></h1>
+</div>
+
+<%= render layout: "shared/submenu" do %>
+  <%= link_to t("views.role.roles_title"), roles_path, endpoint: "/roles" %>
+  <%= link_to t("views.sites.title_sites"), sites_path, endpoint: "/sites" %>
+<% end %>

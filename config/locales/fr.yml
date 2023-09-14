@@ -5,6 +5,12 @@ fr:
         male: "Homme"
         female: "Femme"
         other: "Autre"
+    role:
+      names:
+        admin: "Admin"
+        field_agent: "Field agent"
+        project_manager: "Project manager"
+        project_director: "Project director"
   buttons:
     save: "sauvegarder"
     cancel: "annuler"
@@ -12,9 +18,3 @@ fr:
     successfully_created: "Création effectuée avec succès."
     successfully_updated: "Mise à jour effectuée avec succès."
     successfully_destroyed: "Supprimé(e) avec succès"
-  role:
-    names:
-      admin: "Admin"
-      field_agent: "Agent de Terrain"
-      project_manager: "Chef de projet"
-      project_director: "Directeur du Projet"

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|fr/ do
     devise_for :users, skip: [:registrations]
 
+    resources :sites
     resources :roles
     resources :users
 
