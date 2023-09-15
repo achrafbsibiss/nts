@@ -1,5 +1,7 @@
 class Role < ApplicationRecord
+  
   belongs_to :user
+  validates :name, presence: true
 
   enum name: {
     admin: 1,
