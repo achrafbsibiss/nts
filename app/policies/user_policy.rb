@@ -1,15 +1,19 @@
 class UserPolicy < ApplicationPolicy
     
-  # def new?
-  #   user.admin?
-  # end
+  def new?
+    user.has_role?(:admin)
+  end
   
-  # def edit?
-  #   new?
-  # end
+  def edit?
+    new?
+  end
 
-  # def create?
-  #   new?
-  # end
+  def create?
+    new?
+  end
+
+  def update?
+    new?
+  end
 
 end

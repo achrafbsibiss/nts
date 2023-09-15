@@ -4,9 +4,9 @@
       <span class="inline-flex rounded-full bg-sky-100 px-2 text-xs font-semibold leading-5 text-sky-800"><%= Role.human_enum_name(:name, role.name) %></span>
     </td>
     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-      <div class="flex justify-end">
-        <%= link_to "edit", edit_role_path(role),  data: {turbo_frame: "right_content", action: "right#show"},class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
-        <%= button_to "delete" ,role_path(role), class: "flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :delete, data: {turbo_confirm: "Are you sure you wanna delete this?"}%>
+      <div class="flex justify-end space-x-4">
+        <%= link_to "edit", edit_role_path(role), data: {turbo_frame: "right_content", action: "right#show"}, class: "flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+        <%= button_to "delete", role_path(role), class: "flex justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :delete, data: {turbo_confirm: "Are you sure you wanna delete this?"} %>
       </div>
     </td>
   </td>
