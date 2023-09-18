@@ -8,17 +8,17 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    authorize! @user
+    authorize!
   end
 
   def edit
-    authorize! @user
+    authorize! 
   end
 
   def create
     @user = User.new(user_params)
     @user.password = Devise.friendly_token.first(8)
-    authorize! @user
+    authorize! 
     # @user.confirm
 
     if @user.save
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    authorize! @user
+    authorize! 
     if @user.update(user_params)
       redirect_to user_path(current_user), notice: t("flash.successfully_updated")
     else
@@ -60,7 +60,8 @@ class UsersController < ApplicationController
       :phone,
       :job_title,
       :nationality,
-      :avatar
+      :avatar,
+      :site_id
     )
   end
 end
