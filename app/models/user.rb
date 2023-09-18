@@ -13,7 +13,7 @@ class User < ApplicationRecord
   enum gender: { male: 0, female: 1, other: 2 }
 
   def has_role?(role_name)
-    role.name == role_name.to_s
+    role&.name == role_name.to_s
   end
 
   def avatar_url_or_default
