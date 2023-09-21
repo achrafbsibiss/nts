@@ -13,6 +13,7 @@ en:
         project_manager: "Project manager"
         project_director: "Project director"
   buttons:
+    update: "update"
     save: "save"
     cancel: "cancel"
   flash:

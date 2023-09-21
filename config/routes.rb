@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :sites
     resources :roles
     resources :users
+    resources :equipments
 
     get "dashboard", to: "dashboard#index"
   end
