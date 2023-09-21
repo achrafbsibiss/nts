@@ -12,6 +12,7 @@ fr:
         project_manager: "Project manager"
         project_director: "Project director"
   buttons:
+    update: "actualiser"
     save: "sauvegarder"
     cancel: "annuler"
   flash:

@@ -1,0 +1,46 @@
+<%= form_with(model: @equipment, local: true, class: "mt-5 bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2",  url: @equipment.new_record? ? equipments_path : equipment_path(@equipment)) do |form| %>
+  <div class="px-4 py-6 sm:p-8">
+    <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+      <div class="sm:col-span-full">
+        <%= form.label :name, t("attributes.equipment.name"), class: "block" %>
+        <div class="mt-2">
+          <%= form.text_field :name, class: "w-full" %>
+          <%= inline_error_for(:name, @equipment).html_safe %>
+        </div>
+      </div>
+
+      <div class="sm:col-span-2">
+        <%= form.label :equipment_type, t("attributes.equipment.type"), class: "block" %>
+        <div class="mt-2">
+        <%= form.text_field :equipment_type, class: "w-full" %>
+          <%= inline_error_for(:equipment_type, @equipment).html_safe %>
+        </div>
+      </div>
+
+      <div class="sm:col-span-4">
+        <%= form.label :code, t("attributes.site.code"), class: "block" %>
+        <div class="mt-2">
+        <%= form.telephone_field :code, class: "w-full" %>
+          <%= inline_error_for(:code, @equipment).html_safe %>
+        </div>
+      </div>
+
+      <div class="sm:col-span-full">
+        <%= form.label :site_id, t("attributes.equipment.site"), class: "block" %>
+        <div class="mt-2">
+          <%= form.select :site_id, options_for_select(Site.pluck(:name, :id), @equipment.site_id), include_blank: true, class: "w-full" %>
+          <%= inline_error_for(:site_id, @equipment).html_safe %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
+    <button data-action="click->right#hide" type="button" class= "text-sm font-semibold leading-6 text-gray-900">
+      <%= t("buttons.cancel") %>
+    </button>
+    <% if @equipment.new_record? %>
+      <%= form.submit t("buttons.save"), class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    <% else %>
+      <%= form.submit t("buttons.update"), class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    <% end %>
+<% end %>
