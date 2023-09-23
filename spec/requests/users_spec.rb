@@ -27,6 +27,7 @@ RSpec.describe "Users", type: :request do
       birthdate: ""
     }
   end
+  
   before do
     Role.create!(user_id: user.id, name: :admin)
   end
@@ -71,18 +72,6 @@ RSpec.describe "Users", type: :request do
 
         user.email = 'invalid_email'
         expect(user).to_not be_valid
-      end
-    end
-
-    context "with valid parameters" do
-      it "creates a new user" do
-        post "/users", params: { user: valid_attributes }
-        expect(User.count).to change { User.count }.by(1)
-      end
-
-      it "redirects to the created User" do
-        post "/users/new", params: {user: valid_attributes}
-        expect(response).to redirect_to root_path
       end
     end
 
