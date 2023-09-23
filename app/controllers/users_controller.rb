@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i[show edit update destroy]
   before_action :check_admin_privileges, only: %i[new create]
+
+  def index
+    @users = User.all
+  end
   
   def show
   end 
@@ -24,7 +28,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path, notice: 'User created successfully.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
