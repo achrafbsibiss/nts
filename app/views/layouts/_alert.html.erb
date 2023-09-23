@@ -1,5 +1,4 @@
-<%= turbo_frame_tag "notification_alert" do %>
-  <% if notice || alert %>
+<% if notice || alert %>
     <div
       data-controller="notification"
       data-notification-delay-value="7000"
@@ -14,5 +13,5 @@
         <% end %>
         <p> <%= notice %> </p>
     </div>
-    <% end %>
 <% end %>
+

@@ -1,5 +1,10 @@
 
 en:
+
+  flash:
+    successfully_created: "Successfully created"
+    successfully_updated: "Successfully updated"
+    successfully_destroyed: "Successfully destroyed"
   attributes:
     user:
       genders:

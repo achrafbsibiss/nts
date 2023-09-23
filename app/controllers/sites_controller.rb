@@ -24,6 +24,7 @@ class SitesController < ApplicationController
   def update
     if @site.update(site_params)
       redirect_to sites_path
+      flash.now[:notice] = t("flash.successfully_created")
     else
       render :edit , status: :unprocessable_entity
     end

@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i[show edit update destroy]
-  before_action :check_admin_privileges, only: %i[new create]
 
   def index
     @users = User.all
@@ -42,12 +41,6 @@ class UsersController < ApplicationController
   end 
 
   private
-
-  def check_admin_privileges
-    unless current_user && current_user.admin?
-      redirect_to root_path, alert: 'You do not have permission to create users.'
-    end
-  end
 
   def set_user
     @user = User.find(params[:id])
