@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"  rel="stylesheet" />
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload", defer: true %>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <%= javascript_importmap_tags %>
@@ -19,6 +20,7 @@
     <% else %>
       <%= render partial: "layouts/guest" %>
     <% end %>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   </body>
 </html>
