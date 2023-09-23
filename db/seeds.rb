@@ -14,11 +14,19 @@ User.create(
   nationality: "Morocco",
   cin: "j2902",
   gender: "male",
-  birthdate: "1992-02-02"
+  birthdate: "1992-02-02",
+  site_id: 1
+)
+
+Site.create(
+    name: 'Netis group',
+    city: 'agadir',
+    phone: '084728297',
+    adresse: 'Cite charaf'
 )
 
 
 Role.create(
-  user_id: 1,
-  name: 1
+    name: 1,
+    user_id: 1
 )
