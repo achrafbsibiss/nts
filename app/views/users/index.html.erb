@@ -55,7 +55,7 @@
                   </td>
 
                   <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><%= user.job_title %></td>
-                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><%=Site.find(user.site_id).name %></td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><%= user.site&.name %></td>
                   <td class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                     <%= link_to t("views.shared.view_profile"), user_path(user), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" ,data: {turbo_frame: "_top"} %>
                   </td>

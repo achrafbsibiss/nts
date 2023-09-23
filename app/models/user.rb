@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar, dependent: :destroy
   has_one :role, dependent: :destroy
+  belongs_to :site, optional: true
 
   validates :first_name, :last_name, :gender, :birthdate,
     :cin, :nationality, :gender, presence: true
