@@ -18,13 +18,13 @@ class RolesController < ApplicationController
   def create
     @role = Role.new(role_params)
     if @role.save!
-      # flash.now[:notice] = t("flash.successfully_updated")
       # render turbo_stream: [
-      #   turbo_stream.append("role-list", @role),
-      #   turbo_stream.replace("right", partial: "shared/right"),
-      #   turbo_stream.replace("notification_alert", partial: "layouts/alert")
-      # ]
-      redirect_to roles_path
+        #   turbo_stream.append("role-list", @role),
+        #   turbo_stream.replace("right", partial: "shared/right"),
+        #   turbo_stream.replace("notification_alert", partial: "layouts/alert")
+        # ]
+        redirect_to roles_path
+        flash[:notice] = t("flash.successfully_updated")
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,13 +32,13 @@ class RolesController < ApplicationController
 
   def update
     if @role.update(role_params)
-      # flash.now[:notice] = t("flash.successfully_updated")
       # render turbo_stream: [
-      #   turbo_stream.replace(@role, @role),
-      #   turbo_stream.replace("right", partial: "shared/right"),
-      #   turbo_stream.replace("notification_alert", partial: "layouts/alert")
-      # ]
-      redirect_to roles_path
+        #   turbo_stream.replace(@role, @role),
+        #   turbo_stream.replace("right", partial: "shared/right"),
+        #   turbo_stream.replace("notification_alert", partial: "layouts/alert")
+        # ]
+        redirect_to roles_path
+        flash[:notice] = t("flash.successfully_updated")
     else
       render :edit, status: :unprocessable_entity
     end
