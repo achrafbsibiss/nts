@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <%= javascript_importmap_tags %>
   </head>
 
   <body data-controller="right" class="h-full">
-    <%= render "layouts/alert"%>
+    <%= render partial: "shared/notificaton", locals: { message: flash[:notice] }%>
     <% if current_user  %>
       <%= render partial: "layouts/main" %>
     <% else %>
       <%= render partial: "layouts/guest" %>
     <% end %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   </body>
 </html>

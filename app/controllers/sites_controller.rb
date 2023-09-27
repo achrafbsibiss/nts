@@ -16,6 +16,7 @@ class SitesController < ApplicationController
     @site = Site.new(site_params)
     if @site.save
       redirect_to sites_path
+      flash[:notice] = t("flash.successfully_created")
     else
       render :new
     end
@@ -24,7 +25,7 @@ class SitesController < ApplicationController
   def update
     if @site.update(site_params)
       redirect_to sites_path
-      flash.now[:notice] = t("flash.successfully_created")
+      flash.now[:notice] = t("flash.successfully_updated")
     else
       render :edit , status: :unprocessable_entity
     end
@@ -33,6 +34,7 @@ class SitesController < ApplicationController
   def destroy
     @site.destroy
     redirect_to sites_path
+    flash[:notice] = t("flash.successfully_destroyed")
   end
 
   private
