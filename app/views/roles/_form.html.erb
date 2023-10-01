@@ -10,7 +10,7 @@
       </div>
 
       <div class="sm:col-span-full">
-        <%= form.label :user_id, t("views.role.user"), class: "block" %>
+        <%= form.label :user_id, t("views.role.user") %>
         <div class="mt-2">
           <%= form.select :user_id, options_for_select(@users_to_slect, @role.user_id), include_blank: true %>
           <%= inline_error_for(:user_id, role).html_safe %>
