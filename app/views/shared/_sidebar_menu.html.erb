@@ -32,14 +32,16 @@
                   <a href="<%= root_path%>" class="block px-4 py-2 text-sm dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
                 </li>
                 <li>
-                  <a href="<%= users_path %>" class="block px-4 py-2 text-sm dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Profile</a>
+                  <a href="<%= user_path(current_user) %>" class="block px-4 py-2 text-sm dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Profile</a>
                 </li>
                 <li>
                   <a href="#" class="block px-4 py-2 text-sm dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
                 </li>
                 <li>
-                  <a href="#" class="block px-4 py-2 text-sm dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                   <%= button_to "log out", destroy_user_session_path , method: "delete", class: "block px-4 py-2 text-sm dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"%>
                 </li>
+
+                
               </ul>
             </div>
           </div>

@@ -1,5 +1,5 @@
 <div class="sm:flex-auto">
-  <h1><%= t("views.users.employees_title") %></h1>
+  <h1><%= t("views.users.agents") %></h1>
 </div>
 
 
@@ -27,7 +27,6 @@
     </div>
   </div>
   <div class="mt-5 flow-root">
-    <%= turbo_frame_tag "search-results" do %>
       <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
           <table class="min-w-full divide-y divide-gray-300">
@@ -57,23 +56,19 @@
                   <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><%= user.job_title %></td>
                   <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500"><%= user.site&.name %></td>
                   <td class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                    <%= link_to t("views.shared.view_profile"), user_path(user), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" ,data: {turbo_frame: "_top"} %>
+                    <%= link_to t("views.shared.view_profile"), user_path(user), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
                   </td>
+                  <% if allowed_to?(:destroy?, user)%>
+                    <td class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                    <%= button_to "delete", user_path(user), class: "flex justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :delete, data: {turbo_confirm: "Are you sure you wanna delete this?"} %>
+                    </td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>
           </table>
         </div>
-        <div class="flex items-center justify-between border-t border-gray-200 bg-white p-4 sm:px-6">
-          <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-            <div>
-              <%#= paginate @users%>
-            </div>
-          </div>
-        </div>
       </div>
-    <% end %>
   </div>
 </div>
 
-<div id="import-logger"></div>
