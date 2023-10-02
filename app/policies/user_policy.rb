@@ -16,4 +16,8 @@ class UserPolicy < ApplicationPolicy
     new?
   end
 
+  def destroy?
+    new?
+  end
+
 end
