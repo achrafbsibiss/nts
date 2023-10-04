@@ -14,19 +14,17 @@ class EquipmentsController < ApplicationController
   end
 
   def create
-    puts "hello+++++++++++++++++++++++++++++++++++++"
     @equipment = Equipment.new(equipment_prams)
     if @equipment.save
-      redirect_to equipments_path
+      redirect_to equipments_path, notice: t("flash.successfully_created")
     else
       render :new
     end
   end
 
   def update
-    puts "hello+++++++++++++++++++++++++++++++++++++"
     if @equipment.update(equipment_prams)
-      redirect_to equipments_path
+      redirect_to equipments_path, notice: t("flash.successfully_updated")
     else
       render :edit
     end
@@ -34,11 +32,7 @@ class EquipmentsController < ApplicationController
 
   def destroy
     @equipment.destroy
-    flash.now[:notice] = t("flash.successfully_destroyed")
-    render turbo_stream: [
-      turbo_stream.remove(@role),
-      turbo_stream.replace("notification_alert", partial: "layouts/alert")
-    ]
+    redirect_to equipments_path, notice: t("flash.successfully_destroyed")
   end
 
   private

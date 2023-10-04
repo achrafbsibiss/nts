@@ -21,7 +21,7 @@
             <div class="z-50 hidden my-4 text-base list-none  divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
               <div class="px-4 py-3" role="none">
                 <p class="text-sm  dark:text-white" role="none">
-                  Neil Sims
+                  <%= current_user.full_name%>
                 </p>
                 <p class="text-sm font-medium  truncate dark:text-gray-300" role="none">
                   <%= current_user.email%>
@@ -35,8 +35,9 @@
                   <a href="<%= user_path(current_user) %>" class="block px-4 py-2 text-sm dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Profile</a>
                 </li>
                 <li>
-                  <a href="#" class="block px-4 py-2 text-sm dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
-                </li>
+                  <%= link_to  edit_user_registration_url, class: "block px-4 py-2 text-sm dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" do %>
+                    <%= t("views.shared.password") %>
+                  <% end %>
                 <li>
                    <%= button_to "log out", destroy_user_session_path , method: "delete", class: "block px-4 py-2 text-sm dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"%>
                 </li>
