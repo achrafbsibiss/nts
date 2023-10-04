@@ -4,7 +4,7 @@
       <div class="sm:col-span-full">
         <%= form.label :name, t("views.role.the_role"), class: "block" %>
         <div class="mt-2">
-          <%= form.select :name, options_for_select(Role.names.keys, @role.name), include_blank: true %>
+          <%= form.select :name, options_for_select(Role.names.keys.map { |name| [Role.human_enum_name(:name, name), name] }, @role.name), include_blank: true %>
           <%= inline_error_for(:name, role).html_safe %>
         </div>
       </div>

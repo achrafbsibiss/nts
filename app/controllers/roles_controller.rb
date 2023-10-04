@@ -32,11 +32,6 @@ class RolesController < ApplicationController
 
   def update
     if @role.update(role_params)
-      # render turbo_stream: [
-        #   turbo_stream.replace(@role, @role),
-        #   turbo_stream.replace("right", partial: "shared/right"),
-        #   turbo_stream.replace("notification_alert", partial: "layouts/alert")
-        # ]
         redirect_to roles_path
         flash[:notice] = t("flash.successfully_updated")
     else
@@ -46,11 +41,7 @@ class RolesController < ApplicationController
 
   def destroy
     @role.destroy
-    flash.now[:notice] = t("flash.successfully_destroyed")
-    render turbo_stream: [
-      turbo_stream.remove(@role),
-      turbo_stream.replace("notification_alert", partial: "layouts/alert")
-    ]
+    redirect_to roles_path, notice: t("flash.successfully_destroyed")
   end
 
   private
