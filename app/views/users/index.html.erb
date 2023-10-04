@@ -60,7 +60,7 @@
                   </td>
                   <% if allowed_to?(:destroy?, user)%>
                     <td class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                    <%= button_to "delete", user_path(user), class: "flex justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :delete, data: {turbo_confirm: "Are you sure you wanna delete this?"} %>
+                    <%= button_to "delete", user_path(user), class: "flex justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
                     </td>
                   <% end %>
                 </tr>
