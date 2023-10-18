@@ -4,6 +4,8 @@ class EquipmentsController < ApplicationController
 
   def index
     @equipments = Equipment.all
+    @q = Equipment.ransack(params[:q])
+    @equipment = @q.result(distinct: true)
   end
 
   def edit

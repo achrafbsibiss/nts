@@ -3,6 +3,8 @@ class SitesController < ApplicationController
 
   def index
     @sites = Site.all
+    @q = Site.ransack(params[:q])
+    @site = @q.result(distinct: true) 
   end
 
   def new

@@ -1,38 +1,54 @@
-<div class="px-4 sm:px-6 lg:px-8 mt-5">
-  <div class="sm:flex sm:items-center">
-    <div class="sm:flex-auto">
-      <h1><%= t("views.equipment.equipments") %></h1>
-    </div>
-    <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-      <%= link_to new_equipment_path, class: "inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", data: { turbo_frame: "right_content", action: "right#show" } do %>
-          <svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        <%= t("views.equipment.add_equipment") %>
-      <% end %>
-    </div>
-  </div>
 
-  <div class="mt-8 flow-root">
-    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-          <table class="min-w-full divide-y divide-gray-300">
-            <thead class="bg-gray-50">
-              <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"><%= t("views.equipment.name") %></th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= t("views.equipment.type") %></th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= t("views.equipment.site") %></th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= t("views.equipment.code") %></th>    
-                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6"></th>
-              </tr>
-            </thead>
-            <tbody id="equipment-list" class="divide-y divide-gray-200 bg-white">
-              <%= render partial: 'equipment', collection: @equipments %>
-            </tbody>
-          </table>
-        </div>
+<div class="mt-8 ">
+  <div class="mt-8 px-4 sm:px-6 lg:px-8 ">
+    <div class="relative overflow-x-auto sm:rounded-lg">
+      <div class="my-8">
+        <h1><%= t("views.equipment.equipments") %></h1>
       </div>
-    </div>
+      <div class="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
+          
+        <div class="relative">
+            <%= search_form_for @q, url: equipments_path, method: :get, data: {turbo_frame: :search_equipment} do |f| %>
+              <div class="flex items-center">
+                <div class="max-w-lg w-full lg:max-w-xs">
+                  <%= f.label :name_or_equipment_type_or_code_or_site_name_cont, "Search by all", class: "sr-only" %>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <%= f.search_field :name_or_equipment_type_or_code_or_site_name_cont, oninput: 'this.form.requestSubmit()', autofocus: true, class: "block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "Name" %>
+                   </div>
+                </div>
+              </div>
+              </div>
+            <% end %>
+            <div>
+              <%= link_to new_equipment_path, class: "inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500", data: { turbo_frame: "right_content", action: "right#show" } do %>
+                <svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <%= t("views.equipment.add_equipment") %>
+              <% end %>
+            </div>
+        </div>
+
+      </div>
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3"><%= t("views.equipment.name") %></th>
+            <th scope="col" class="px-6 py-3"><%= t("views.equipment.type")%></th>
+            <th scope="col" class="px-6 py-3"><%= t("views.equipment.site") %></th>
+            <th scope="col" class="px-6 py-3"><%= t("views.equipment.code") %></th>
+            <th scope="col" class="px-6 py-3"></th>
+          </tr>
+        </thead>
+        <tbody id="equipment-list">
+          <%= render partial: 'equipment', collection: @q.result %>
+        </tbody>
+      </table>
   </div>
+</div>
 </div>

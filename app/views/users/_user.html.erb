@@ -1,0 +1,34 @@
+<%= turbo_frame_tag :search_user do %>
+    <tr class="border-b ">
+        <th scope="row" class="px-10 py-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <div class="flex items-center">
+            <div class="h-11 w-11 flex-shrink-0">
+                <%= image_tag user.avatar_url_or_default, class: "h-11 w-11 rounded-full" %>
+            </div>
+            <div class="ml-4">
+                <div class="font-medium text-gray-900"><%= user.full_name(first_name_first: false) %></div>
+                <div class="mt-1 text-gray-500"><%= user.email %></div>
+            </div>
+            </div>
+        </th>
+        <td class="px-1 py-6"><%= user.job_title %></td>
+       
+        <td class="px-10 py-6">
+         <% user.site.each_with_index do |site, index| %>
+            <%= site&.name %>
+            <% if index < user.site.size - 1 %>
+                ,
+            <% end %>
+         <% end %>
+        </td>
+       
+       
+        <td class="px-10 py-6 flex items-center justify-end">
+            <%= link_to "Show", user_path(user.id), class: "block py-2 px-4 text-blue-500 hover:text-blue-800 " %>
+            <% if allowed_to?(:destroy?, user)%>
+            <%= link_to "Edit", edit_user_path(user.id), class: "block py-2 px-4 text-blue-500 hover:text-blue-800 " %>
+            <%= button_to "delete", user_path(user.id), class: "block py-2 px-4  text-red-500 hover:text-red-800 ", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% end %> 
+        </td>
+    </tr>
+<% end %>

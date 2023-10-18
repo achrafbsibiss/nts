@@ -6,13 +6,23 @@ class User < ApplicationRecord
 
   has_one_attached :avatar, dependent: :destroy
   has_one :role, dependent: :destroy
-  belongs_to :site, optional: true
+  has_many :site_users, class_name: 'Siteuser'
+  has_many :site, through: :site_users
 
 
   validates :first_name, :last_name, :gender, :birthdate,
     :cin, :nationality, :gender, presence: true
 
   enum gender: { male: 0, female: 1, other: 2 }
+
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["first_name", "last_name", "cin", "job_title", "email"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["avatar_attachment", "avatar_blob", "role", "site"]
+  end
 
   def has_role?(role_name)
     role&.name == role_name.to_s

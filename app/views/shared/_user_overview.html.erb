@@ -37,8 +37,15 @@
       </div>
       <div class="px-6 py-5 text-center text-sm font-medium">
         <span class="text-gray-900">
+       
           <strong>Site:</strong>
-          <%= user.site&.name %>
+           <% user.site.each_with_index do |site, index| %>
+            <%= site&.name %>
+            <% if index < user.site.size - 1 %>
+                ,
+            <% end %>
+            <% end %>
+        
         </span>
       </div>
       <div class="px-6 py-5 text-center text-sm font-medium">

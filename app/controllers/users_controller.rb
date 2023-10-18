@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @q = User.ransack(params[:q])
+    @user = @q.result(distinct: true)
   end
   
   def show
@@ -63,7 +65,7 @@ class UsersController < ApplicationController
       :job_title,
       :nationality,
       :avatar,
-      :site_id
+      site_ids:[]
     )
   end
 end
