@@ -1,5 +1,5 @@
-<%= turbo_frame_tag :search_user do %>
-    <tr class="border-b ">
+
+    <tr id="<%= dom_id(user)%>" class="border-b ">
         <th scope="row" class="px-10 py-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
             <div class="flex items-center">
             <div class="h-11 w-11 flex-shrink-0">
@@ -12,17 +12,17 @@
             </div>
         </th>
         <td class="px-1 py-6"><%= user.job_title %></td>
-       
+        
         <td class="px-10 py-6">
-         <% user.site.each_with_index do |site, index| %>
-            <%= site&.name %>
-            <% if index < user.site.size - 1 %>
+            <% user.site.each_with_index do |site, index| %>
+              <%= site&.name %>
+              <% if index < user.site.size - 1 %>
                 ,
+              <% end %>
             <% end %>
-         <% end %>
         </td>
-       
-       
+        
+        
         <td class="px-10 py-6 flex items-center justify-end">
             <%= link_to "Show", user_path(user.id), class: "block py-2 px-4 text-blue-500 hover:text-blue-800 " %>
             <% if allowed_to?(:destroy?, user)%>
@@ -31,4 +31,3 @@
             <% end %> 
         </td>
     </tr>
-<% end %>

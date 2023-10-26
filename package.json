@@ -1,5 +1,19 @@
 {
+  "name": "app",
+  "private": "true",
   "dependencies": {
-    "stimulus-notification": "^2.2.0"
-  }
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^7.3.0",
+    "@rails/actiontext": "^7.1.0",
+    "debounce": "^1.2.1",
+    "esbuild": "^0.19.4",
+    "global": "^4.4.0",
+    "stimulus-notification": "^2.2.0",
+    "trix": "^2.0.7"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+  },
+  "packageManager": "yarn@1.22.19"
 }

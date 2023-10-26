@@ -6,11 +6,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%#= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"  rel="stylesheet" />
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload", defer: true %>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
-    <%= javascript_importmap_tags %>
   </head>
 
   <body data-controller="right" class="h-full">

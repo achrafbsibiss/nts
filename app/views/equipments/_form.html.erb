@@ -1,6 +1,20 @@
 <%= form_with(model: @equipment, local: true, class: "mt-5 bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2",  url: @equipment.new_record? ? equipments_path : equipment_path(@equipment)) do |form| %>
   <div class="px-4 py-6 sm:p-8">
     <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+       <div class="sm:col-span-2">
+          <%= form.label :image, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+            <%= t("views.settings.employee_picture") %>
+          <% end %>
+        <div class="items-center w-full sm:flex">
+          <% if @equipment.image.attached? && @equipment.name == "fibre"%>
+            <%= image_tag @equipment&.image, class: "w-20 h-20 mb-4  sm:mr-4 sm:mb-0" %>
+          <% end %>
+          <div class="w-full">
+            <%= form.file_field :image, class: "w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400", accept: 'image/svg,image/png,image/jpg,image/jpeg', id: "avatar-input", type: "file" %>
+            <p class="mt-1 text-xs font-normal text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+          </div>
+        </div>
+
       <div class="sm:col-span-full">
         <%= form.label :name, t("attributes.equipment.name"), class: "block" %>
         <div class="mt-2">
@@ -24,6 +38,14 @@
           <%= inline_error_for(:code, @equipment).html_safe %>
         </div>
       </div>
+
+       <!-- div class="sm:col-span-2">
+        <%= form.label :port, t("attributes.site.number_for_ports"), class: "block" %>
+        <div class="mt-2">
+        <%= form.telephone_field :port, class: "w-full" %>
+          <%= inline_error_for(:port, @equipment).html_safe %>
+        </div>
+      </div -->
 
       <div class="sm:col-span-full">
         <%= form.label :site_id, t("attributes.equipment.site"), class: "block" %>

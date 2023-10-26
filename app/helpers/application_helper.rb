@@ -8,4 +8,12 @@ module ApplicationHelper
     end
     html.join
   end
+  
+  def active_class(path)
+    current_page?(path) ? "active" : ""
+  end
+
+  def link_sidebar(path)
+    current_page?(path) ? " rounded-lg bg-gray-700 text-white" : ""
+  end
 end
