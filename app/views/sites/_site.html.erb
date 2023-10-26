@@ -1,31 +1,31 @@
-<%= turbo_frame_tag :search_site do %>
-  <tr class="bg-white border-b hover:bg-gray-50 ">
-    <th scope="row" class="px-6 py-4">
-      <%= site.name %>
-    </th>
+<tr id="<%= dom_id(site)%>" class="bg-white border-b hover:bg-gray-50 ">
+  <th scope="row" class="px-6 py-4">
+    <%= site.name %>
+  </th>
 
-    <td class="px-6 py-4"><%= site.city %></td>
+  <td class="px-6 py-4">
+    <div class="flex items-center">
+      <%= site.city %>
+    </div>
+  </td>
 
-    <td class="px-6 py-4">
-      <div class="flex items-center">
-          <div class="mr-2"><%= site.phone %></div> 
-      </div>
-    </td>
-    <td class="px-4 py-4">
-      <div class="flex items-center">
-          <div class="mr-2"><%= site.adresse.truncate(30) %></div>
-      </div>
-    </td>
-    <!-- <td class="px-6 py-4">
-      <div class="flex items-center">
-          <div class="mr-2"><%= site.description %></div>
-      </div>
-    </td> -->
-    <td class="px-1">
-      <div class="flex justify-end space-x-4">
-        <%= link_to "edit", edit_site_path(site), data: {turbo_frame: "right_content", action: "right#show"},  class: "flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
-        <%= button_to "delete", site_path(site), class: "flex justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :delete, data: {turbo_confirm: "Are you sure you wanna delete this?"}%>
-      </div>
-    </td>
- </tr>
-<% end %>
+  <td class="px-6 py-4">
+    <div class="flex items-center">
+        <div class="mr-2"><%= site.phone %></div> 
+    </div>
+  </td>
+  <td class="px-4 py-4">
+    <div class="flex items-center">
+        <div class="mr-2"><%= site.adresse.truncate(30) %></div>
+    </div>
+  </td>
+  <!-- <td class="px-6 py-4">
+    <div class="flex items-center">
+        <div class="mr-2"><%= site.description %></div>
+    </div>
+  </td> -->
+  <td class="px-10 py-6 flex items-center justify-end">
+      <%= link_to "edit", edit_site_path(site), data: {turbo_frame: "right_content", action: "right#show"},  class: "block py-2 px-4 text-blue-500 hover:text-blue-800" %>
+      <%= button_to "delete", site_path(site), class: "block py-2 px-4  text-red-500 hover:text-red-800", method: :delete, data: {turbo_confirm: "Are you sure you wanna delete this?"}%>
+  </td>
+</tr>

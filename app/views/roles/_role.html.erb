@@ -1,13 +1,16 @@
-<tr id="<%= dom_id role %>">
-  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-500 sm:pl-6"><%= role.user.full_name %></td>
-    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-      <span class="inline-flex rounded-full bg-sky-100 px-2 text-xs font-semibold leading-5 text-sky-800"><%= Role.human_enum_name(:name, role.name) %></span>
-    </td>
-    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-      <div class="flex justify-end space-x-4">
-        <%= link_to "edit", edit_role_path(role), data: {turbo_frame: "right_content", action: "right#show"}, class: "flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
-        <%= button_to "delete", role_path(role), class: "flex justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :delete, data: {turbo_confirm: "Are you sure you wanna delete this?"} %>
-      </div>
-    </td>
+<tr id="<%= dom_id role %>" class="bg-white border-b hover:bg-gray-50 ">
+  <th scope="row" class="px-6 py-4">
+    <%= role.user.full_name %>
+  </th>
+
+  <td class="px-6 py-4">
+    <div class="flex items-center">
+      <%= Role.human_enum_name(:name, role.name) %>
+    </div>
+  </td>
+
+  <td class="px-10 py-6 flex items-center justify-end">
+      <%= link_to "edit", edit_role_path(role), data: {turbo_frame: "right_content", action: "right#show"},  class: "block py-2 px-4 text-blue-500 hover:text-blue-800" %>
+      <%= button_to "delete", role_path(role), class: "block py-2 px-4  text-red-500 hover:text-red-800", method: :delete, data: {turbo_confirm: "Are you sure you wanna delete this?"}%>
   </td>
 </tr>

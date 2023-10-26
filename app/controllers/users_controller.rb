@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     # @user.confirm
 
     if @user.save
-      redirect_to root_path, notice: 'User created successfully.'
+      redirect_to users_path, notice: 'User created successfully.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
     authorize! 
     if @user.update(user_params)
-      redirect_to user_path(current_user), notice: t("flash.successfully_updated")
+      redirect_to users_path, notice: t("flash.successfully_updated")
     else
       render :edit, status: :unprocessable_entity
     end

@@ -20,4 +20,10 @@ input[type="submit"] {
 }
 
 */
-@import 'actiontext.css';
+
+.active {
+  @apply text-blue-500;
+}
+
+
+/* @import 'actiontext.css'; */

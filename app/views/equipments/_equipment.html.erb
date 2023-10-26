@@ -1,5 +1,5 @@
-<%= turbo_frame_tag :search_equipment do %>
- <tr class="bg-white border-b   hover:bg-gray-50 ">
+
+ <tr id="<%= dom_id(equipment)%>" class="bg-white border-b   hover:bg-gray-50 ">
     <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
       <div class="pl-3">
         <div class="text-base font-semibold"><%= equipment.name %></div>
@@ -18,13 +18,18 @@
           <div class=" mr-2"><%= equipment.code %></div>
       </div>
     </td>
-    <td class="px-6 py-4">
-      <div class="flex justify-end space-x-4">
-        <%= link_to "edit", edit_equipment_path(equipment), data: {turbo_frame: "right_content", action: "right#show"}, class: "flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
-        <%= button_to "delete", equipment_path(equipment), method: :delete, data: { confirm: "Are you sure you wanna delete this?"}, class: "flex justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    <!-- td class="px-6 py-4">
+      <div class="flex items-center">
+          <div class=" mr-2"><%#= equipment.port %></div>
       </div>
+    </td -->
+    
+
+    <td class="px-10 py-6 flex items-center justify-end">
+      <%= link_to "Edit",  edit_equipment_path(equipment), class: "block py-2 px-4 text-blue-500 hover:text-blue-800 " %>
+      <%= button_to "delete", equipment_path(equipment), class: "block py-2 px-4  text-red-500 hover:text-red-800 ", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     </td>
  </tr>
-<%end%>
+
 
 

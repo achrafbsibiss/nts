@@ -1,8 +1,10 @@
 <div class="sm:flex-auto">
-  <h1><%= t("views.shared.settings") %></h1>
-</div>
+  <h1 class="text-2xl tracking-tight font-extrabold text-gray-900" ><%= t("views.shared.settings") %></h1>
 
-<%= render layout: "shared/submenu" do %>
-  <%= link_to t("views.role.roles"), roles_path, endpoint: "/roles" %>
-  <%= link_to t("views.sites.sites"), sites_path, endpoint: "/sites" %>
-<% end %>
+<div class="mx-2 pt-3">
+  <%= render layout: "shared/submenu" do %>
+    <%= link_to t("views.role.roles"), roles_path, class: active_class(roles_path) %>
+    <%= link_to t("views.sites.sites"), sites_path, class: active_class(sites_path) %>
+  <% end %>
+</div>
+</div>
