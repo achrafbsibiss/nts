@@ -47,15 +47,13 @@
                 <%= inline_error_for(:birthdate, @user).html_safe %>
               </div>
               <div>
-                <%= hidden_field_tag "user[site_ids][]", nil %>
-                <% Site.all.each do |site| %>
-                  <%= check_box_tag "user[site_ids][]", site.id, @user.site_ids.include?(site.id), id: dom_id(site) %>
-                  <%= label_tag dom_id(site), site.name %> 
-                <% end %> 
-
-               <%= form.collection_check_boxes :site_ids, Site.all, :id, :name do |m| %>
-                <%= m.check_box %> <%= m.label %>
-              <% end %>
+                
+                 
+                <%= form.collection_check_boxes :site_ids, Site.all, :id, :name  do |m| %>
+                    <ul id="" class= "">
+                    <li><%= m.check_box %> <%= m.label %></li>
+                    <ul>
+                <% end %>
               </div>
               <div>
                 <%= form.label :job_title, t("attributes.user.job_tittle"), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
@@ -76,9 +74,9 @@
           </div>
         
           <div class="flex items-center space-x-4">
-              <%= link_to t("attributes.buttons.cancel"), users_path %>
-    <%#= link_to t("buttons.cancel"), (action_name == 'edit' ? user_path(@user, type: @type) : dashboard_path), class: "text-sm font-semibold leading-6 text-gray-900" %>
-    <%= form.submit t("buttons.save"), class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+            <%= link_to t("attributes.buttons.cancel"), users_path %>
+            <%#= link_to t("buttons.cancel"), (action_name == 'edit' ? user_path(@user) : dashboard_path), class: "text-sm font-semibold leading-6 text-gray-900" %>
+            <%= form.submit t("buttons.save"), class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
           </div>
       <% end %>
   </div>
