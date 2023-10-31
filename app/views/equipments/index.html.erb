@@ -47,12 +47,12 @@
                 </thead>
                 <tbody id="equipment">
                   <%= turbo_frame_tag:reloadable, "search-equipment"  do %>
-                  <%= render partial: 'equipment', collection: @q.result %>
+                  <%= render partial: 'equipment', collection: @equipments %>
                   <% end %>
                 </tbody>
             </table>
         </div>
-        <%= render partial: 'shared/pagination' %>
+        <%= pagination @equipments %>
     </div>
   </div>
 </div>

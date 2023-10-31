@@ -2,9 +2,9 @@ class SitesController < ApplicationController
   before_action :set_site, only: [:edit, :update, :destroy]
 
   def index
-    @sites = Site.all
+    # @sites = Site.all
     @q = Site.ransack(params[:q])
-    @site = @q.result(distinct: true) 
+    @sites = @q.result(distinct: true).page(params[:page])
   end
 
   def new

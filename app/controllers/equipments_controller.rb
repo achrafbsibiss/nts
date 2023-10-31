@@ -3,9 +3,8 @@ class EquipmentsController < ApplicationController
   before_action :set_equipment, only: %i[edit update destroy]
 
   def index
-    @equipments = Equipment.all
     @q = Equipment.ransack(params[:q])
-    @equipment = @q.result(distinct: true)
+    @equipments = @q.result(distinct: true).page(params[:page])
   end
 
   def edit
