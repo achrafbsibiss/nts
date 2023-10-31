@@ -1,4 +1,9 @@
 module ApplicationHelper
+
+  def pagination(records)
+    render partial: "shared/pagination", locals: {records: records}
+  end
+
   def inline_error_for(field, form_obj)
     html = []
     if form_obj.errors[field].any?

@@ -48,12 +48,12 @@
               </thead>
               <tbody id="sites-list">
                 <%= turbo_frame_tag:reloadable, :search_site  do %>
-                  <%= render partial: 'site', collection: @q.result %>
+                  <%= render partial: 'site', collection: @sites %>
                 <% end %>
               </tbody>
           </table>
         </div>
-        <%= render partial: 'shared/pagination' %>
+        <%= pagination @sites %>
     </div>
   </div>
 </div>

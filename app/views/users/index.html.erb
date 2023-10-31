@@ -51,12 +51,12 @@
                     </thead>
                     <tbody id="user">
                      <%= turbo_frame_tag:reloadable, "search-results"  do %>
-                      <%= render partial: 'user', collection: @q.result %>
+                      <%= render partial: 'user', collection: @users %>
                      <% end %>
                     </tbody>
                 </table>
             </div>
-            <%= render partial: 'shared/pagination' %>
+            <%= pagination  @users %>
         </div>
     </div>
 </div>
