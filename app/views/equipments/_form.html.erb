@@ -2,16 +2,17 @@
   <div class="px-4 py-6 sm:p-8">
     <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
        <div class="sm:col-span-2">
-          <%= form.label :image, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
-            <%= t("views.settings.employee_picture") %>
+          <%= form.label :image, class: "block mb-2 text-sm font-medium text-gray-900 d" do %>
+            <%= t("views.settings.equipment_picture") %>
           <% end %>
         <div class="items-center w-full sm:flex">
           <% if @equipment.image.attached? && @equipment.name == "fibre"%>
             <%= image_tag @equipment&.image, class: "w-20 h-20 mb-4  sm:mr-4 sm:mb-0" %>
           <% end %>
           <div class="w-full">
-            <%= form.file_field :image, class: "w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400", accept: 'image/svg,image/png,image/jpg,image/jpeg', id: "avatar-input", type: "file" %>
-            <p class="mt-1 text-xs font-normal text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+            <%= form.file_field :image, class: "w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-500  focus:outline-none  ", accept: 'image/svg,image/png,image/jpg,image/jpeg', id: "avatar-input", type: "file" %>
+            <p class="mt-1 text-xs font-normal text-gray-500 " id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+            <%= inline_error_for(:image, @equipment).html_safe %>
           </div>
         </div>
 
@@ -26,10 +27,37 @@
       <div class="sm:col-span-2">
         <%= form.label :equipment_type, t("attributes.equipment.type"), class: "block" %>
         <div class="mt-2">
-        <%= form.text_field :equipment_type, class: "w-full" %>
+          <%= form.text_field :equipment_type, class: "w-full", id:"equipment_type", data: { controller: "equipment"} %>
           <%= inline_error_for(:equipment_type, @equipment).html_safe %>
         </div>
       </div>
+
+      <%# if @equipment.equipment_type == "fibre"%>
+          <div class="sm:col-span-2 ">
+            <%= form.label :number_of_ports,  t("attributes.equipment.numbre_of_port") %>
+            <div class="mt-2">
+              <%= form.text_field :number_of_ports, class: "w-full", data: { controller: "equipment", target: "portNumber"} %>
+              <%#= inline_error_for(:number_of_ports, @equipment).html_safe %>
+            </div>
+          </div>
+
+          <div class="sm:col-span-2">
+            <div class="field">
+              <%= form.label :port_statuses, "Port Statuses" %>
+              <% (1..2).each do |n| %>
+             <br><label>S<%= n %></label><br>
+                <% (1..32).each do |port_num| %>
+                  <% port_name = "S#{n}-P#{port_num}" %>
+                  <label>
+                    <%= port_name %>
+                    <%= check_box_tag "equipment[port_statuses][#{port_name}]", true, @equipment&.port_statuses[port_name], data: { controller: "equipment", target: "portStatuses" } %>
+                  </label>
+                <% end %>
+              <% end %>
+              <%= inline_error_for(:port_statuses, @equipment).html_safe %>
+            </div>
+          </div>
+      <%# end %>  
 
       <div class="sm:col-span-4">
         <%= form.label :code, t("attributes.site.code"), class: "block" %>
@@ -39,18 +67,11 @@
         </div>
       </div>
 
-       <!-- div class="sm:col-span-2">
-        <%= form.label :port, t("attributes.site.number_for_ports"), class: "block" %>
-        <div class="mt-2">
-        <%= form.telephone_field :port, class: "w-full" %>
-          <%= inline_error_for(:port, @equipment).html_safe %>
-        </div>
-      </div -->
 
       <div class="sm:col-span-full">
-        <%= form.label :site_id, t("attributes.equipment.site"), class: "block" %>
+        <%= form.label :site_id, t("attributes.equipment.site"), class: "block mb-2 text-sm font-medium text-gray-900 " %>
         <div class="mt-2">
-          <%= form.select :site_id, options_for_select(Site.pluck(:name, :id), @equipment.site_id), include_blank: true, class: "w-full" %>
+          <%= form.select :site_id, options_for_select(Site.pluck(:name, :id), @equipment.site_id), include_blank: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700" %>
           <%= inline_error_for(:site_id, @equipment).html_safe %>
         </div>
       </div>

@@ -8,14 +8,17 @@ class EquipmentsController < ApplicationController
   end
 
   def edit
+    # @equipment.port_statuses = {}
   end
 
   def new
     @equipment = Equipment.new
+    @equipment.port_statuses = {}
   end
 
   def create
     @equipment = Equipment.new(equipment_prams)
+    
     if @equipment.save
       redirect_to equipments_path, notice: t("flash.successfully_created")
     else
@@ -32,6 +35,7 @@ class EquipmentsController < ApplicationController
   end
 
   def destroy
+    puts "+++++++++++++++++++++"
     @equipment.destroy
     redirect_to equipments_path, notice: t("flash.successfully_destroyed")
   end
@@ -43,6 +47,6 @@ class EquipmentsController < ApplicationController
   end
 
   def equipment_prams
-    params.require(:equipment).permit(:name, :code, :site_id, :equipment_type, :image)
+    params.require(:equipment).permit(:name, :code, :site_id, :equipment_type, :image, :number_of_ports, port_statuses: {} )
   end
 end
