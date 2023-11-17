@@ -1,35 +1,31 @@
+<tr id="<%= dom_id(equipment)%>" class="bg-white border-b   hover:bg-gray-50 ">
+  <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+    <div class="pl-3">
+      <div class="text-base font-semibold"><%= equipment.name %></div>
+    </div>  
+  </th>
+  <td class="px-6 py-4">
+    <%= equipment.equipment_type %>
+  </td>
+  <td class="px-6 py-4">
+    <div class="flex items-center">
+        <div class="  mr-2"><%= equipment.site&.name %></div> 
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="flex items-center">
+        <div class=" mr-2"><%= equipment.code %></div>
+    </div>
+  </td>
+  <!-- td class="px-6 py-4">
+    <div class="flex items-center">
+        <div class=" mr-2"><%#= equipment.port %></div>
+    </div>
+  </td -->
+  
 
- <tr id="<%= dom_id(equipment)%>" class="bg-white border-b   hover:bg-gray-50 ">
-    <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-      <div class="pl-3">
-        <div class="text-base font-semibold"><%= equipment.name %></div>
-      </div>  
-    </th>
-    <td class="px-6 py-4">
-      <%= equipment.equipment_type %>
-    </td>
-    <td class="px-6 py-4">
-      <div class="flex items-center">
-          <div class="  mr-2"><%= equipment.site&.name %></div> 
-      </div>
-    </td>
-    <td class="px-6 py-4">
-      <div class="flex items-center">
-          <div class=" mr-2"><%= equipment.code %></div>
-      </div>
-    </td>
-    <!-- td class="px-6 py-4">
-      <div class="flex items-center">
-          <div class=" mr-2"><%#= equipment.port %></div>
-      </div>
-    </td -->
-    
-
-    <td class="px-10 py-6 flex items-center justify-end">
-      <%= link_to "Edit",  edit_equipment_path(equipment), class: "block py-2 px-4 text-blue-500 hover:text-blue-800 " %>
-      <%= button_to "delete", equipment_path(equipment), class: "block py-2 px-4  text-red-500 hover:text-red-800 ", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    </td>
- </tr>
-
-
-
+  <td class="px-10 py-6 flex items-center justify-end">
+    <%= link_to "Edit",  edit_equipment_path(equipment), class: "block py-2 px-4 text-blue-500 hover:text-blue-800 " %>
+    <%= button_to "delete", equipment_path(equipment), class: "block py-2 px-4  text-red-500 hover:text-red-800 ", method: "delete",data: { turbo_confirm: "Are you sure?"} %>
+  </td>
+</tr>

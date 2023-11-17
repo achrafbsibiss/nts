@@ -1,8 +1,7 @@
 class SitesController < ApplicationController
-  before_action :set_site, only: [:edit, :update, :destroy]
+  before_action :set_site, only: %i[:edit :update :destroy]
 
   def index
-    # @sites = Site.all
     @q = Site.ransack(params[:q])
     @sites = @q.result(distinct: true).page(params[:page])
   end

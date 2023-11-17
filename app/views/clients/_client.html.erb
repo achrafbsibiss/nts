@@ -1,0 +1,36 @@
+<tr id="<%= dom_id(client)%>" class="bg-white border-b   hover:bg-gray-50 ">
+  <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+    <div class="pl-3">
+      <div class="text-base font-semibold"><%= client.name %></div>
+    </div>  
+  </th>
+  <td class="px-6 py-4">
+    <%= client.responsible_name %>
+  </td>
+  <td class="px-6 py-4">
+    <div class="flex items-center">
+        <div class="mr-2"><%= client.responsible_email %></div> 
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="flex items-center">
+        <div class=" mr-2"><%= client.phone %></div>
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="flex items-center">
+        <div class=" mr-2"><%= client.adress %></div>
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="flex items-center">
+        <div class=" mr-2"><%= client.city %></div>
+    </div>
+  </td>
+    
+
+  <td class="px-10 py-6 flex items-center justify-end">
+    <%= link_to "Edit",  edit_client_path(client), class: "block py-2 px-4 text-blue-500 hover:text-blue-800 " %>
+    <%= button_to "delete", client_path(client), class: "block py-2 px-4  text-red-500 hover:text-red-800 ", method: :delete, data: {  turbo_method: "delete",turbo_confirm: "Are you sure you wanna delete this?"} %>
+  </td>
+</tr>
