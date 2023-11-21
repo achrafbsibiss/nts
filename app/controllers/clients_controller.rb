@@ -1,5 +1,7 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: %i[edit update destroy];
+  before_action :set_breadcrumps, only: %i[create new edit update];
+  before_action :set_edit_breadcrumps, only: %i[edit update];
 
   def index
     @q = Client.ransack(params[:q])
@@ -9,6 +11,7 @@ class ClientsController < ApplicationController
   def new 
     @client = Client.new
     authorize!
+    add_breadcrump(t("attributes.clients.new"))
   end
 
   def edit
@@ -40,6 +43,15 @@ class ClientsController < ApplicationController
 
   private
 
+  def set_breadcrumps
+    add_breadcrump(t("attributes.clients.client"), clients_path)
+  end
+
+  def set_edit_breadcrumps
+    add_breadcrump(@client.name, client_path(@client))
+    add_breadcrump(t("attributes.clients.edit"))
+  end
+  
   def set_client
     @client = Client.find(params[:id])
   end
