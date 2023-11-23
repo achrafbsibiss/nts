@@ -13,7 +13,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
   </head>
 
-  <body data-controller="right" class="h-full">
+  <body class="h-full">
     <%= render partial: "layouts/alert", locals: { message: flash[:alert]}%>
     <% if current_user  %>
       <%= render partial: "layouts/main" %>
