@@ -9,6 +9,9 @@ import { application } from "./application"
 import SearchController from "./search_controller.js"
 application.register("search", SearchController)
 
+import DropdownController from "./dropdown_controller.js"
+application.register('dropdown', DropdownController)
+
 // import Notification from 'stimulus-notification'
 import NotificationsContoller from "./notifications_controller.js"
 application.register('notifications', NotificationsContoller)
