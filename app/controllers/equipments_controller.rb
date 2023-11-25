@@ -8,7 +8,9 @@ class EquipmentsController < ApplicationController
   end
 
   def edit
-    # @equipment.port_statuses = {}
+    if @equipment.port_statuses.nil?
+      @equipment.port_statuses = {}
+    end
   end
 
   def new
@@ -35,7 +37,6 @@ class EquipmentsController < ApplicationController
   end
 
   def destroy
-    puts "+++++++++++++++++++++"
     @equipment.destroy
     redirect_to equipments_path, notice: t("flash.successfully_destroyed")
   end

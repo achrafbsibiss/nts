@@ -1,5 +1,5 @@
 <%= form_with(model: @equipment, local: true, class: "mt-5 bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2",  url: @equipment.new_record? ? equipments_path : equipment_path(@equipment)) do |form| %>
-  <div class="px-4 py-6 sm:p-8">
+  <div data-controller="equipment" class="px-4 py-6 sm:p-8">
     <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
        <div class="sm:col-span-2">
           <%= form.label :image, class: "block mb-2 text-sm font-medium text-gray-900 d" do %>
@@ -23,20 +23,20 @@
           <%= inline_error_for(:name, @equipment).html_safe %>
         </div>
       </div>
-
+      
       <div class="sm:col-span-2">
         <%= form.label :equipment_type, t("attributes.equipment.type"), class: "block" %>
-        <div class="mt-2">
-          <%= form.text_field :equipment_type, class: "w-full", id:"equipment_type", data: { controller: "equipment"} %>
+        <div  class="mt-2">
+          <%= form.text_field :equipment_type,class: "w-full", id:"equipment_type" %>
           <%= inline_error_for(:equipment_type, @equipment).html_safe %>
         </div>
       </div>
 
-      <%# if @equipment.equipment_type == "fibre"%>
+       <div data-equipment-target="portNumber portStatuses">
           <div class="sm:col-span-2 ">
             <%= form.label :number_of_ports,  t("attributes.equipment.numbre_of_port") %>
-            <div class="mt-2">
-              <%= form.text_field :number_of_ports, class: "w-full", data: { controller: "equipment", target: "portNumber"} %>
+            <div  class="mt-2">
+              <%= form.text_field :number_of_ports, class: "w-full" %>
               <%#= inline_error_for(:number_of_ports, @equipment).html_safe %>
             </div>
           </div>
@@ -44,20 +44,22 @@
           <div class="sm:col-span-2">
             <div class="field">
               <%= form.label :port_statuses, "Port Statuses" %>
-              <% (1..2).each do |n| %>
-             <br><label>S<%= n %></label><br>
-                <% (1..32).each do |port_num| %>
-                  <% port_name = "S#{n}-P#{port_num}" %>
-                  <label>
-                    <%= port_name %>
-                    <%= check_box_tag "equipment[port_statuses][#{port_name}]", true, @equipment&.port_statuses[port_name], data: { controller: "equipment", target: "portStatuses" } %>
-                  </label>
+              <div>
+                <% (1..2).each do |n| %>
+                  <br><label>S<%= n %></label><br>
+                  <% (1..32).each do |port_num| %>
+                    <% port_name = "S#{n}-P#{port_num}" %>
+                    <label>
+                      <%= port_name %>
+                      <%= check_box_tag "equipment[port_statuses][#{port_name}]", true,@equipment&.port_statuses[port_name] %>
+                    </label>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
               <%= inline_error_for(:port_statuses, @equipment).html_safe %>
             </div>
           </div>
-      <%# end %>  
+      </div>
 
       <div class="sm:col-span-4">
         <%= form.label :code, t("attributes.site.code"), class: "block" %>

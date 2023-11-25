@@ -2,7 +2,7 @@ class Site < ApplicationRecord
   has_many :site_users, class_name: 'Siteuser'
   has_many :users, through: :site_users
   has_rich_text :description
-  has_many :equipment
+  has_many :equipment, dependent: :destroy
 
   validates :name, :city, :adresse, :phone, presence: true
   

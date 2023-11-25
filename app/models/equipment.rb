@@ -4,12 +4,9 @@ class Equipment < ApplicationRecord
   validate :port_statuses, if: :requires_port_validation?
   # validates :equipment_type, inclusion: { in: ["fibre", "optical fiber"], message: "must be fibre or optical fiber" }
 
-  belongs_to :site, dependent: :destroy
+  belongs_to :site
   has_one_attached :image, dependent: :destroy
 
-  # ransacker :site_name_cont do |parent|
-  #   Arel::Nodes::InfixOperation.new('||', parent.table[:site_name], Arel::Nodes.build_quoted(' '))
-  # end
 
   def self.ransackable_attributes(auth_object = nil)
     ["code", "equipment_type", "name", "port", "site_name_cont"]
@@ -23,7 +20,7 @@ class Equipment < ApplicationRecord
   private
 
   def requires_port_validation?
-    equipment_type == "fibre" || equipment_type == "optical fiber"
+    equipment_type == "fibre"
   end
 
   def validate_number_of_ports
