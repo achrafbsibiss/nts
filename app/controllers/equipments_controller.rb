@@ -10,7 +10,7 @@ class EquipmentsController < ApplicationController
   end
 
   def edit
-     if @equipment.port_statuses.nil?
+    if @equipment.port_statuses.nil?
       @equipment.port_statuses = {}
     end
   end

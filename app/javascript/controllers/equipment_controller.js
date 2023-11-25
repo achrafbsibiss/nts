@@ -1,22 +1,34 @@
+// app/javascript/controllers/equipment_controller.js
+
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["portNumber", "portStatuses"]
 
   connect() {
-    console.log("hello world")
     this.toggleFields();
+    const equipmentTypeInput = document.getElementById("equipment_type");
+    if (equipmentTypeInput) {
+      equipmentTypeInput.addEventListener("input", () => {
+        console.log("change");
+        this.toggleFields();
+      });
+    }
   }
 
   toggleFields() {
-    const equipmentType = document.getElementById("equipment_type").value
+    const equipmentTypeInput = document.getElementById("equipment_type");
+    const portNumber = this.portNumberTarget;
+    const portStatuses = this.portStatusesTarget;
 
-    if (equipmentType === "fiber" || equipmentType === "optical fiber") {
-      this.portNumber.classlist.remove("hidden")
-      this.portStatuses.classList.remove("hidden")
+    const equipmentType = equipmentTypeInput.value.toLowerCase(); // Corrected
+    const equipmentFbre = equipmentType.includes("optical fibre");
+    if(equipmentFbre) {
+      portNumber.classList.remove("hidden");
+      portStatuses.classList.remove("hidden");
     } else {
-      this.portNumber.classList.add("hidden")
-      this.portStatuses.classList.add("hidden")
+      portNumber.classList.add("hidden");
+      portStatuses.classList.add("hidden");
     }
   }
 }
