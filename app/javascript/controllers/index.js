@@ -16,9 +16,6 @@ application.register('dropdown', DropdownController)
 import NotificationsContoller from "./notifications_controller.js"
 application.register('notifications', NotificationsContoller)
 
-import EquipmentController from "./equipment_controller"
-application.register("equipment", EquipmentController )
-
 // const application = Application.start()
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"

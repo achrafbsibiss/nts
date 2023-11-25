@@ -10,20 +10,15 @@ class EquipmentsController < ApplicationController
   end
 
   def edit
-     if @equipment.port_statuses.nil?
-      @equipment.port_statuses = {}
-    end
   end
 
   def new
     @equipment = Equipment.new
-    @equipment.port_statuses = {}
     add_breadcrump(t("attributes.equipments.new"))
   end
 
   def create
     @equipment = Equipment.new(equipment_prams)
-    
     if @equipment.save
       redirect_to equipments_path, notice: t("flash.successfully_created")
     else
@@ -60,6 +55,6 @@ class EquipmentsController < ApplicationController
   end
 
   def equipment_prams
-    params.require(:equipment).permit(:name, :code, :site_id, :equipment_type, :image, :number_of_ports, port_statuses: {} )
+    params.require(:equipment).permit(:name, :code, :site_id, :equipment_type, :image)
   end
 end
