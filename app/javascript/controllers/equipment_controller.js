@@ -22,7 +22,7 @@ export default class extends Controller {
     const portStatuses = this.portStatusesTarget;
 
     const equipmentType = equipmentTypeInput.value.toLowerCase(); // Corrected
-    const equipmentFbre = equipmentType.includes("optical fibre");
+    const equipmentFbre = equipmentType.includes("fibre");
     if(equipmentFbre) {
       portNumber.classList.remove("hidden");
       portStatuses.classList.remove("hidden");
