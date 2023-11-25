@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_breadcrumps, only: %i[create new edit update]
+  before_action :set_edit_breadcrumps, only: %i[edit update]
 
   def index
-    # @users = User.all
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page])
   end
@@ -14,10 +15,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     authorize!
+    add_breadcrump(t("attributes.new"))
   end
 
   def edit
-    authorize! 
+    authorize!
   end
 
   def create
@@ -51,6 +53,15 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_breadcrumps
+    add_breadcrump("Agents", users_path)
+  end
+
+  def set_edit_breadcrumps
+    add_breadcrump(@user.full_name, user_path(@user))
+    add_breadcrump(t("attributes.edit_agent"))
   end
 
   def user_params

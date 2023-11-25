@@ -6,8 +6,9 @@
   <div class="lg:pl-72">
     <main class="py-20">
       <div class="py-7 sm:px-6 lg:px-8" >
-        <%#= render partial: 'shared/breadcrumbs' %>
-
+        <% if breadcrumps.present?%>
+          <%= render partial: 'shared/breadcrump' %>
+        <% end %>
         <%= yield %>
       </div>
     </main>

@@ -1,5 +1,5 @@
 <section class="bg-white dark:bg-gray-900">
-  <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
+  <div data-controller="dropdown" class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
      <%= form_with(model: @user) do |form| %>
           <h2 class="mb-4 text-xl font-semibold leading-none text-gray-900 dark:text-white">General Information</h2>
           <div class="grid gap-4 mb-4 md:gap-6 md:grid-cols-2 sm:mb-8">
@@ -47,13 +47,30 @@
                 <%= inline_error_for(:birthdate, @user).html_safe %>
               </div>
               <div>
+                 <%= form.label :site_id, t("attributes.user.sites"), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white"%>
+                 <button class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
+                          type="button"
+                          data-action="click->dropdown#toggleDropdown" 
+                          data-dropdown-target="openbutton" >
+                    <%=t("attributes.user.select_site")%>
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                  </button>
+                  <div data-dropdown-target="dropdownContent" class="bg-white rounded-lg shadow w-60 dark:bg-gray-700">
+                        <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200">
+                          <%= form.collection_check_boxes :site_ids, Site.all, :id, :name  do |m| %>
+                            <li>
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100">
+                                <%= m.check_box %>
+                                <%= m.label %>
+                              </div>
+                            </li>
+                          <% end %>
+                        <ul>
+                  </div>
+                  <%= inline_error_for(:birthdate, @user).html_safe %>
                 
-                 
-                <%= form.collection_check_boxes :site_ids, Site.all, :id, :name  do |m| %>
-                    <ul id="" class= "">
-                    <li><%= m.check_box %> <%= m.label %></li>
-                    <ul>
-                <% end %>
               </div>
               <div>
                 <%= form.label :job_title, t("attributes.user.job_tittle"), class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>

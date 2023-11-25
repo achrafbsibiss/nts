@@ -1,6 +1,20 @@
 
 en:
   attributes:
+    new: "New"
+    edit_agent: "Edit profile"
+    clients:
+      client: "client"
+      edit: "Edit client"
+      new: "Add new client"
+    equipments:
+     equipment: "Equipment"
+     edit: "Edit equipment"
+     new: "Add new Equipment"
+    sites:
+      site: "Sites"
+      new: "Add new site"
+      edit: "Edit site"
     user:
       genders:
         male: "Male"
