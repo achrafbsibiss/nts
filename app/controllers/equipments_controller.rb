@@ -27,7 +27,7 @@ class EquipmentsController < ApplicationController
     if @equipment.save
       redirect_to equipments_path, notice: t("flash.successfully_created")
     else
-      render :new
+      render :new 
     end
   end
 

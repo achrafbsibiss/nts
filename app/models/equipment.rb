@@ -1,8 +1,8 @@
 class Equipment < ApplicationRecord
+  # validates :equipment_type, inclusion: { in: ["fibre", "optical fiber"], message: "must be fibre or optical fiber" }
   validates :name, :equipment_type, :code, :site_id, presence: true
   validate :validate_number_of_ports, if: :requires_port_validation?
   validate :port_statuses, if: :requires_port_validation?
-  # validates :equipment_type, inclusion: { in: ["fibre", "optical fiber"], message: "must be fibre or optical fiber" }
 
   belongs_to :site
   has_one_attached :image, dependent: :destroy
@@ -24,16 +24,8 @@ class Equipment < ApplicationRecord
   end
 
   def validate_number_of_ports
-    errors.add(:number_of_ports, 'must be between 1 and 64') unless number_of_ports.between?(1, 64)
+    if number_of_ports.nil? || !number_of_ports.between?(1, 64)
+      errors.add(:number_of_ports, 'must be between 1 and 64')
+    end
   end
-
-  # def initialize_port_statuses
-  #   self.port_statuses ||= {}
-  #   (1..2).each do |n|
-  #     (1..32).each do |p|
-  #       port_name = "s#{n}p#{p}"
-  #       self.port_statuses[port_name] ||= false
-  #     end
-  #   end
-  # end
 end
