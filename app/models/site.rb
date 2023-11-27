@@ -3,6 +3,7 @@ class Site < ApplicationRecord
   has_many :users, through: :site_users
   has_rich_text :description
   has_many :equipment, dependent: :destroy
+  has_many :client, dependent: :destroy
 
   validates :name, :city, :adresse, :phone, presence: true
   
@@ -11,6 +12,6 @@ class Site < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["equipment", "rich_text_description", "users"]
+    ["equipment", "rich_text_description", "users", "client"]
   end
 end

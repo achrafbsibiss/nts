@@ -10,7 +10,7 @@ class SitesController < ApplicationController
 
   def new
     @site = Site.new
-    add_breadcrump(t("attributes.sites.new"))
+    add_breadcrump(t("attributes.projects.new"))
   end
 
   def edit
@@ -53,11 +53,11 @@ class SitesController < ApplicationController
   end
 
   def set_breadcrumps
-    add_breadcrump(t("attributes.sites.site"), sites_path)
+    add_breadcrump(t("attributes.projects.project"), sites_path)
   end
 
   def set_edit_breadcrumps
     add_breadcrump(@site.name, sites_path(@site))
-    add_breadcrump(t("attributes.sites.edit"))
+    add_breadcrump(t("attributes.projects.edit"))
   end
 end
