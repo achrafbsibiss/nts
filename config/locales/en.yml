@@ -11,10 +11,10 @@ en:
      equipment: "Equipment"
      edit: "Edit equipment"
      new: "Add new Equipment"
-    sites:
-      site: "Sites"
-      new: "Add new site"
-      edit: "Edit site"
+    projects:
+      project: "projects"
+      new: "Add new project"
+      edit: "Edit project"
     user:
       genders:
         male: "Male"

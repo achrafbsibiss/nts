@@ -3,6 +3,7 @@ class Site < ApplicationRecord
   has_many :users, through: :site_users
   has_rich_text :description
   has_many :equipment, dependent: :destroy
+  has_many :client, dependent: :destroy
 
   validates :name, :city, :adresse, :phone, presence: true
   
