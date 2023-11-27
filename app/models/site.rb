@@ -12,6 +12,6 @@ class Site < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["equipment", "rich_text_description", "users"]
+    ["equipment", "rich_text_description", "users", "client"]
   end
 end

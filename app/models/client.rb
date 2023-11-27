@@ -8,6 +8,6 @@ class Client < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["logo_attachment", "logo_blob"]
+    ["logo_attachment", "logo_blob", "site"]
   end
 end
